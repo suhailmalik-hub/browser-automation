@@ -1,0 +1,31 @@
+export const defaultUrl =
+    "https://e-applicationvisa.esteri.it/moduloOnline.html?L=en-GB#step-1";
+
+export const formData = {
+    surname: "Micheal",
+    name: "Jackson",
+    date_of_birth: "1996/01/01",
+    place_of_birth: "Chennai",
+    country_of_birth: "IND - INDIA",
+    current_nationality: "IND - INDIA",
+    sex: "Male",
+    address: "123 Main St, Chennai, India",
+    postal_code: "70010",
+    city: "Chennai",
+    country: "IND - INDIA",
+    phone: "+919876543210",
+    email: "italytest@yopmail.com",
+    surname_of_parental_authority_or_legal_guardian: "Nick",
+    first_name_of_parental_authority_or_legal_guardian: "Jones",
+    country_of_issue: "IND - INDIA",
+    document_type: "ORDINARY PASSPORT",
+    number_of_travel_document: "1",
+    expiry_date_of_travel_document: "2031/01/01",
+    member_state_of_first_entry: "AUT - AUSTRIA",
+    main_purpose_of_the_journey: "Tourism",
+    member_state_of_destination: "AUT - AUSTRIA",
+    number_of_entries_required: "One",
+    duration_of_the_intended_stay_or_transit_indicate_the_number_of_days: "10",
+    intended_date_of_arrival_in_the_schengen_area: "2026-01-01",
+    schengen_departure_date: "2026-01-11",
+};
