@@ -8,6 +8,20 @@ export default function Home() {
   const [status, setStatus] = useState<string | null>(null);
   const [isRunning, setIsRunning] = useState(false);
 
+  const healthCheck = async () => {
+    try {
+      const response = await fetch("/api/healthcheck", {
+        method: "GET",
+      });
+      if (!response.ok) {
+        throw new Error("Health check failed");
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      console.error("Health check error:", message);
+    }
+  };
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus(null);
@@ -31,7 +45,7 @@ export default function Home() {
       }
 
       setStatus(
-        "Playwright is done. Check the automation run for the filled form in the headless browser.",
+        "Playwright is done. Check the automation run for the filled form in the headless browser."
       );
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unknown error";
@@ -49,14 +63,21 @@ export default function Home() {
             Visa form helper
           </p>
           <h1 className="text-3xl font-semibold sm:text-4xl">
-            Open the target form and let Playwright fill it with the provided data.
+            Open the target form and let Playwright fill it with the provided
+            data.
           </h1>
           <p className="max-w-2xl text-base text-slate-300">
-            Click run to open the URL in a new tab and trigger a server-side Playwright
-            run that completes the form using the preset JSON payload. Adjust the URL if
-            needed.
+            Click run to open the URL in a new tab and trigger a server-side
+            Playwright run that completes the form using the preset JSON
+            payload. Adjust the URL if needed.
           </p>
         </header>
+        <button
+          onClick={healthCheck}
+              className="inline-flex shrink-0 items-center justify-center rounded-2xl bg-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+        >
+          Run Health Check
+        </button>
 
         <form
           onSubmit={onSubmit}
@@ -85,8 +106,8 @@ export default function Home() {
             </button>
           </div>
           <p className="mt-3 text-sm text-slate-400">
-            A new tab opens in your browser. The Playwright run executes on the server and
-            fills the form in a headless Chromium instance.
+            A new tab opens in your browser. The Playwright run executes on the
+            server and fills the form in a headless Chromium instance.
           </p>
           {status && (
             <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-200">
